@@ -126,8 +126,8 @@ def proxy_wasm_cpp_host_repositories():
     maybe(
         git_repository,
         name = "v8",
-        # 10.4.132.18
-        commit = "ce33dd2c08521fbe7f616bcd5941f2f388338030",
+        # 10.7.193.13
+        commit = "6c8b357a84847a479cd329478522feefc1c3195a",
         remote = "https://chromium.googlesource.com/v8/v8",
         shallow_since = "1657561920 +0000",
         patches = ["@proxy_wasm_cpp_host//bazel/external:v8.patch"],
@@ -143,7 +143,7 @@ def proxy_wasm_cpp_host_repositories():
         new_git_repository,
         name = "com_googlesource_chromium_base_trace_event_common",
         build_file = "@v8//:bazel/BUILD.trace_event_common",
-        commit = "d115b033c4e53666b535cbd1985ffe60badad082",
+        commit = "521ac34ebd795939c7e16b37d9d3ddb40e8ed556",
         remote = "https://chromium.googlesource.com/chromium/src/base/trace_event/common.git",
         shallow_since = "1642576054 -0800",
     )
@@ -157,7 +157,7 @@ def proxy_wasm_cpp_host_repositories():
         new_git_repository,
         name = "com_googlesource_chromium_zlib",
         build_file = "@v8//:bazel/BUILD.zlib",
-        commit = "64bbf988543996eb8df9a86877b32917187eba8f",
+        commit = "f48cb14d487038d20c85680e29351e095a0fea8b",
         remote = "https://chromium.googlesource.com/chromium/src/third_party/zlib.git",
         shallow_since = "1653988038 -0700",
     )
