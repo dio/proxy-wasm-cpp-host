@@ -158,6 +158,7 @@ jobs:
       run: >
         ${{ matrix.run_under }}
         bazel ${{ matrix.action }}
+        --test_timeout 1200
         --verbose_failures
         --test_output=errors
         --define engine=${{ matrix.engine }}
