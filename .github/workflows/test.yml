@@ -116,7 +116,7 @@ jobs:
           os: ubuntu-20.04
           arch: x86_64
           action: test
-          flags: --config=clang-tsan --test_timeout=600
+          flags: --config=clang-tsan
           cache: true
 
     steps:
@@ -166,7 +166,6 @@ jobs:
       run: >
         ${{ matrix.run_under }}
         bazel ${{ matrix.action }}
-        --test_timeout 1200
         --verbose_failures
         --test_output=errors
         --define engine=${{ matrix.engine }}
