@@ -98,6 +98,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
+    timeout-minutes: ${{ matrix.timeout }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -110,6 +112,7 @@ jobs:
           action: test
           flags: --runs_per_test=1000
           cache: true
+          timeout: 720
 
     steps:
     - uses: actions/checkout@v2
