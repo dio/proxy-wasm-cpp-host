@@ -98,7 +98,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    timeout-minutes: ${{ matrix.timeout }}
+    timeout-minutes: ${{ matrix.timeout-minutes }}
 
     strategy:
       fail-fast: false
@@ -110,9 +110,9 @@ jobs:
           os: macos-11
           arch: x86_64
           action: test
-          flags: --runs_per_test=1000
+          flags: --runs_per_test=50
           cache: true
-          timeout: 720
+          timeout-minutes: 1440
 
     steps:
     - uses: actions/checkout@v2
