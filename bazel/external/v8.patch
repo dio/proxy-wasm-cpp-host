@@ -33,3 +33,24 @@ index ce3f569fd5..dc8a4c4f6a 100644
  }  // extern "C"
 +
 +#endif
+diff --git a/bazel/defs.bzl b/bazel/defs.bzl
+index e957c0fad3..00f4bacd34 100644
+--- a/bazel/defs.bzl
++++ b/bazel/defs.bzl
+@@ -138,6 +138,16 @@ def _default_args():
+             "@v8//bazel/config:is_windows": [
+                 "/std:c++17",
+             ],
++            "@v8//bazel/config:is_macos": [
++                # The clang available on macOS Catalina has a warning that isn't clean on v8 code.
++                # The warning doesn't show up with more recent clangs, so disable it for now.
++                "-Wno-range-loop-analysis",
++
++                # To supress warning on deprecated declaration on v8 code:
++                # src/base/platform/platform-darwin.cc:56:22:
++                # 'getsectdatafromheader_64' is deprecated: first deprecated in macOS 13.0.
++                "-Wno-deprecated-declarations",
++            ],
+             "//conditions:default": [],
+         }) + select({
+             "@v8//bazel/config:is_gcc_fastbuild": [
