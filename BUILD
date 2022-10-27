@@ -110,6 +110,19 @@ cc_library(
         "src/v8/v8.cc",
     ],
     hdrs = ["include/proxy-wasm/v8.h"],
+    copts = select({
+        "@platforms//os:macos": [
+            # The clang available on macOS catalina has a warning that isn't clean on v8 code.
+            # The warning doesn't show up with more recent clangs, so disable it for now.
+            "-Wno-range-loop-analysis",
+
+            # To supress warning on deprecated declaration on v8 code:
+            # external/v8/src/base/platform/platform-darwin.cc:56:22:
+            # 'getsectdatafromheader_64' is deprecated: first deprecated in macOS 13.0.
+            "-Wno-deprecated-declarations",
+        ],
+        "//conditions:default": [],
+    }),
     defines = [
         "PROXY_WASM_HAS_RUNTIME_V8",
         "PROXY_WASM_HOST_ENGINE_V8",
