@@ -145,7 +145,7 @@ def proxy_wasm_cpp_host_repositories():
         build_file = "@v8//:bazel/BUILD.trace_event_common",
         commit = "521ac34ebd795939c7e16b37d9d3ddb40e8ed556",
         remote = "https://chromium.googlesource.com/chromium/src/base/trace_event/common.git",
-        shallow_since = "1662508800 +0000",
+        shallow_since = "1662669790 -0700",
     )
 
     native.bind(
